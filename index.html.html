@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hồ sơ Quyền lực: Vụ án Dân chủ</title>
+<style>
+:root{--g1:hsl(var(--h,25) 30% 64%);--g2:hsl(var(--h,25) 28% 46%);--hill:#2a1810;--ink:#2a1a12;--mute:#4a3426;--bg:#e6d4ab;--panel:#f3e7cb;--line:#b9976a;--acc:#e0a030;--onacc:#2a1500;--red:#a8231c;--ok:#2e6b3f;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--g1:hsl(var(--h,25) 26% 15%);--g2:hsl(var(--h,25) 30% 7%);--hill:#000;--ink:#f1e4cf;--mute:#c9b59a}}
+:root[data-theme="dark"]{--g1:hsl(var(--h,25) 26% 15%);--g2:hsl(var(--h,25) 30% 7%);--hill:#000;--ink:#f1e4cf;--mute:#c9b59a}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:linear-gradient(var(--g1),var(--g2)) fixed,var(--bg);color:var(--ink);font:17px/1.55 "Trebuchet MS","Segoe UI",Roboto,Arial,sans-serif}
+#app{max-width:860px;margin:0 auto;padding:16px}
+h1,h2{font-family:Cambria,"Times New Roman",serif;line-height:1.2;margin:0}
+.top{display:flex;align-items:center;gap:14px}
+.mk{font-size:54px;line-height:1;position:relative;flex:none}
+.mk small{position:absolute;right:-10px;bottom:-4px;font-size:24px}
+.prog{flex:1}
+.bar{height:14px;border-radius:7px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--acc);transition:width .6s}
+.prog p{margin:4px 0 0;font-size:14px;color:var(--mute);display:flex;justify-content:space-between}
+.card{background:var(--panel);border:2px solid var(--line);border-radius:14px;padding:22px;margin-top:14px}
+.story{color:var(--mute);font-family:Cambria,"Times New Roman",serif;font-style:italic;margin:6px 0 12px}
+.q{font-size:20px;font-weight:700;margin:0 0 14px}
+button{font:inherit;cursor:pointer;color:var(--ink);background:var(--panel);border:2px solid var(--line);border-radius:10px;padding:10px 14px}
+button:focus-visible,input:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+button:disabled{cursor:default}
+button.go{background:var(--acc);border-color:var(--acc);color:var(--onacc);font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.it{text-align:center;padding:14px 8px}
+.it span{display:block;font-size:44px;line-height:1.1}
+.it em{display:block;font-style:normal;font-size:14px;margin-top:4px}
+.good{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 18%,var(--panel))}
+.sel{border-color:var(--acc);background:color-mix(in srgb,var(--acc) 22%,var(--panel))}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cols>div{display:grid;gap:10px;align-content:start}
+.ls{text-align:left;width:100%}
+.n{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--ok);color:#fff;font-weight:700;font-size:14px;margin-right:8px}
+.tf{display:flex;gap:12px;margin-top:6px}
+.tf button{flex:1;font-size:20px;font-weight:700;padding:16px}
+.say{font-size:20px;margin:6px 0 16px;padding:16px;border-radius:10px;background:var(--bg)}
+input{font:700 22px Cambria,"Times New Roman",serif;width:130px;padding:6px 10px;border:2px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);text-align:center}
+.note{margin-top:14px;padding:10px 14px;border-left:5px solid var(--acc);background:var(--bg);border-radius:4px}
+.note.err{border-color:var(--red)}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;align-items:center}
+.tears{margin-left:auto;font-size:20px}
+.big{font-size:clamp(28px,6vw,42px);margin-bottom:6px}
+.shake{animation:sh .35s}
+@keyframes sh{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@media (prefers-reduced-motion:reduce){.shake{animation:none}.bar i{transition:none}}
+@media (max-width:520px){.card{padding:16px}.cols{gap:8px}}
+#app{position:relative;z-index:1;padding-bottom:170px}
+#deco{position:fixed;left:0;right:0;bottom:0;height:160px;pointer-events:none;z-index:0;display:flex;justify-content:space-around;align-items:flex-end;padding:0 8px 4px;font-size:clamp(34px,7vw,64px);overflow:hidden}
+#deco:before,#deco:after{content:"";position:absolute;bottom:-90px;height:150px;border-radius:50%;background:color-mix(in srgb,var(--hill) 35%,transparent)}
+#deco:before{left:-15%;width:70%}
+#deco:after{right:-15%;width:75%;background:color-mix(in srgb,var(--hill) 22%,transparent)}
+#deco span{position:relative}
+.hero{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.monk{font-size:clamp(70px,16vw,110px);line-height:1}
+.gt{font-family:Cambria,"Times New Roman",serif;font-size:clamp(32px,8vw,56px);line-height:1.1;margin:8px 0 0;background:var(--acc);color:var(--onacc);display:inline-block;padding:10px 20px;border-radius:12px;transform:rotate(-1.5deg);box-shadow:0 5px 0 color-mix(in srgb,var(--acc) 55%,#000)}
+.sub{margin:0;color:var(--mute);font-weight:700}
+.lvi{display:flex;gap:16px;align-items:center;margin-bottom:12px}
+.lve{font-size:72px;line-height:1}
+.dim{opacity:.45}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 60% 55% at 50% 0%,rgba(255,196,100,.25),transparent 70%)}
+.card{--ink:#2a1a10;--mute:#6a4b30;--bg:#e6d4ab;--panel:#f3e7cb;--line:#b9976a;--ok:#2e6b3f;--red:#a8231c;background:var(--panel);color:var(--ink);border:2px solid var(--line);border-radius:6px;box-shadow:0 8px 0 rgba(0,0,0,.22),0 20px 32px rgba(0,0,0,.35)}
+.card:after{content:"MẬT";position:absolute;top:12px;right:14px;border:3px solid var(--red);color:var(--red);padding:0 10px;font:700 18px "Courier New",Courier,monospace;letter-spacing:.2em;transform:rotate(7deg);opacity:.5;pointer-events:none}
+.card{position:relative}
+.sub,.card small{font-family:"Courier New",Courier,monospace}
+.gt{background:#1b1310;color:#f3d9a4;border:3px double var(--acc);box-shadow:0 5px 0 #000;font-family:"Courier New",Courier,monospace;font-weight:700;font-size:clamp(26px,6.5vw,46px);transform:rotate(-1deg)}
+#deco span{opacity:.75}
+@media (max-width:520px){.card:after{display:none}}
+</style>
+</head>
+<body>
+<div id="deco" aria-hidden="true"></div>
+<div id="app">
+  <div class="top">
+    <div class="mk" id="mk">🕵️<small id="mood">❓</small></div>
+    <div class="prog"><div class="bar"><i id="fill" style="width:0"></i></div><p><span id="plab"></span><span>Càng nhiều chứng cứ, càng gần sự thật</span></p></div>
+  </div>
+  <div class="card" id="stage"></div>
+</div>
+<script>
+const SH=a=>[...a].sort(()=>Math.random()-.5);
+const norm=s=>s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/đ/gi,"d").replace(/[^a-z]/gi,"").toLowerCase();
+const L=[
+{t:"find",n:"Màn 1: Hiện trường vụ án",s:"Đêm khuya, “Bản Hiến chương Quyền lực của nhân dân” biến mất khỏi tòa nhà trung tâm. Cả lớp là đội thám tử, phải thu thập đúng chứng cứ tại hiện trường.",q:"Chạm vào 3 chứng cứ đúng.",h:"Dân chủ là quyền lực thuộc về nhân dân. Dân chủ XHCN dựa trên sở hữu xã hội về tư liệu sản xuất chủ yếu.",w:"Hiện trường đã được khoanh vùng. Dân chủ là quyền lực thuộc về nhân dân; dân chủ XHCN dành cho tuyệt đại đa số nhân dân lao động.",R:[
+{q:"Chạm vào 3 chứng cứ đúng về khái niệm “dân chủ”.",it:[["🏛️","Gốc Hy Lạp: demos là nhân dân, kratos là quyền lực",1],["👑","Quyền lực thuộc về một vị vua",0],["🗳️","Dân chủ là quyền lực thuộc về nhân dân",1],["🏟️","Dân chủ chủ nô ở Aten là hình thức dân chủ đầu tiên trong lịch sử",1],["🔒","Dân chủ chỉ dành cho một nhóm quý tộc",0],["🗡️","Dùng bạo lực để áp đặt ý chí",0]],h:"Dân chủ ghép từ hai chữ Hy Lạp: nhân dân và quyền lực."},
+{q:"Chạm vào 3 đặc điểm của dân chủ xã hội chủ nghĩa.",it:[["✊","Quyền lực thuộc về nhân dân lao động",1],["🧭","Có sự lãnh đạo của Đảng Cộng sản",1],["⚙️","Dựa trên chế độ sở hữu xã hội về tư liệu sản xuất chủ yếu",1],["💰","Dựa trên chế độ tư hữu tư bản chủ nghĩa",0],["🎭","Chỉ là hình thức, nhân dân không có quyền thực chất",0],["🧱","Chỉ phục vụ giai cấp bóc lột",0]],h:"Cơ sở kinh tế của dân chủ XHCN là sở hữu xã hội về tư liệu sản xuất chủ yếu."},
+{q:"Chạm vào 3 biểu hiện của bản chất Nhà nước xã hội chủ nghĩa.",it:[["👥","Mang bản chất giai cấp công nhân, đồng thời có tính nhân dân rộng rãi",1],["🏗️","Có chức năng tổ chức, xây dựng kinh tế và văn hóa - xã hội",1],["🕊️","Có chức năng bảo vệ Tổ quốc, giữ gìn hòa bình, hợp tác quốc tế",1],["💼","Là công cụ của thiểu số bóc lột đa số",0],["🔥","Chủ trương đàn áp nhân dân để duy trì trật tự",0],["🚪","Tách rời khỏi nhân dân",0]],h:"Nhà nước XHCN vừa mang bản chất giai cấp công nhân vừa gắn bó với nhân dân."},
+{q:"Chạm vào 3 đặc điểm của Nhà nước pháp quyền XHCN Việt Nam.",it:[["📖","Tổ chức, hoạt động theo Hiến pháp và pháp luật",1],["🤲","Tôn trọng, bảo vệ quyền con người, quyền công dân",1],["🧭","Đặt dưới sự lãnh đạo của Đảng Cộng sản Việt Nam",1],["⚖️","Quyền lực bị chia cắt hoàn toàn, không cần thống nhất",0],["👑","Đứng trên pháp luật",0],["🙈","Không chịu sự giám sát của nhân dân",0]],h:"Quyền lực nhà nước là thống nhất, có phân công, phối hợp, kiểm soát."},
+{q:"Chạm vào 3 hướng xây dựng và phát huy dân chủ XHCN ở Việt Nam.",it:[["🏘️","Thực hiện dân chủ ở cơ sở: dân biết, dân bàn, dân làm, dân kiểm tra",1],["📜","Hoàn thiện pháp luật, nâng cao hiệu lực quản lý của Nhà nước",1],["🏛️","Xây dựng và hoàn thiện Nhà nước pháp quyền XHCN",1],["🧯","Hạn chế quyền làm chủ của nhân dân",0],["💸","Để quyền lực gắn với đặc quyền, đặc lợi",0],["📵","Che giấu thông tin với nhân dân",0]],h:"Phát huy dân chủ đi đôi với tăng cường pháp chế, thông tin công khai."}]},
+{t:"ord",n:"Màn 2: Phòng hồ sơ",s:"Hồ sơ lưu trữ bị xáo trộn. Muốn lần ra thủ phạm, cả lớp phải dựng lại đúng thứ tự.",q:"Chạm lần lượt từ SỚM nhất đến MUỘN nhất.",h:"Dân chủ ra đời từ thời chủ nô; nhà nước XHCN đầu tiên là Nhà nước Xô viết 1917.",w:"Dòng thời gian đã khớp. Từ Công xã Pa-ri 1871 đến Nhà nước Xô viết 1917, rồi các bản Hiến pháp của nước ta.",R:[
+{q:"Xếp các hình thức dân chủ theo thứ tự xuất hiện trong lịch sử.",it:[["Dân chủ chủ nô","Bước 1"],["Dân chủ tư sản","Bước 2"],["Dân chủ xã hội chủ nghĩa","Bước 3"]],h:"Từ xã hội chiếm hữu nô lệ, đến chủ nghĩa tư bản, đến chủ nghĩa xã hội."},
+{q:"Xếp các cột mốc theo thời gian.",it:[["Công xã Pa-ri, mầm mống của nhà nước kiểu mới","1871"],["Cách mạng Tháng Mười Nga, Nhà nước Xô viết ra đời","1917"],["Cách mạng Tháng Tám, Nhà nước Việt Nam Dân chủ Cộng hòa ra đời","1945"],["Quốc hội thông qua Hiến pháp hiện hành của nước ta","2013"]],h:"Công xã Pa-ri là thế kỷ 19, Hiến pháp hiện hành thông qua năm 2013."},
+{q:"Xếp các bản Hiến pháp của nước ta theo thời gian.",it:[["Hiến pháp đầu tiên của nước Việt Nam Dân chủ Cộng hòa","1946"],["Hiến pháp thứ hai","1959"],["Hiến pháp sau khi đất nước thống nhất","1980"],["Hiến pháp đầu tiên sau Đổi mới","1992"]],h:"Hiến pháp đầu tiên ra đời ngay sau Cách mạng Tháng Tám."},
+{q:"Xếp 4 bước của phương châm phát huy dân chủ ở cơ sở.",it:[["Dân biết","Bước 1"],["Dân bàn","Bước 2"],["Dân làm","Bước 3"],["Dân kiểm tra","Bước 4"]],h:"Phải biết thông tin trước khi bàn, làm rồi mới kiểm tra."},
+{q:"Xếp các mốc về Hiến pháp và Nhà nước pháp quyền theo thời gian.",it:[["Hiến pháp 1992 được thông qua","1992"],["Hiến pháp 1992 sửa đổi, ghi nhận Nhà nước pháp quyền XHCN Việt Nam","2001"],["Hiến pháp 2013 được thông qua","2013"],["Đại hội XIII của Đảng","2021"]],h:"Hãy bám theo năm: 1992, 2001, 2013, 2021."}]},
+{t:"match",n:"Màn 3: Bảng chứng cứ",s:"Trên bảng chứng cứ, các sợi chỉ đỏ bị đứt. Hãy nối lại manh mối với nội dung tương ứng.",q:"Chạm một ô bên trái, rồi chạm ô bên phải khớp với nó.",h:"Quốc hội lập pháp, Chính phủ hành pháp, Tòa án tư pháp.",w:"Các sợi chỉ đỏ đã nối liền, chứng cứ khớp nhau.",R:[
+{q:"Nối loại hình dân chủ với đặc điểm.",it:[["Dân chủ","Quyền lực thuộc về nhân dân"],["Dân chủ chủ nô","Chỉ dành cho công dân tự do, nô lệ bị loại ra"],["Dân chủ tư sản","Phục vụ lợi ích giai cấp tư sản, dựa trên tư hữu TBCN"],["Dân chủ XHCN","Dân chủ cho tuyệt đại đa số nhân dân lao động"]],h:"Dân chủ XHCN là dân chủ của đa số nhân dân."},
+{q:"Nối sự kiện hoặc bản chất với nội dung.",it:[["Công xã Pa-ri 1871","Mầm mống của nhà nước kiểu mới"],["Nhà nước Xô viết 1917","Nhà nước XHCN đầu tiên trên thế giới"],["Bản chất giai cấp của Nhà nước XHCN","Mang bản chất giai cấp công nhân"],["Bản chất xã hội của Nhà nước XHCN","Gắn bó mật thiết với nhân dân"]],h:"Nhà nước Xô viết ra đời sau thắng lợi của Cách mạng Tháng Mười Nga."},
+{q:"Nối quyền lực nhà nước với cơ quan thực hiện.",it:[["Quyền lập pháp","Do Quốc hội thực hiện"],["Quyền hành pháp","Do Chính phủ thực hiện"],["Quyền tư pháp","Do Tòa án nhân dân thực hiện"],["Nhà nước pháp quyền XHCN","Quyền lực thống nhất, có phân công, phối hợp, kiểm soát"]],h:"Ba quyền: lập pháp, hành pháp, tư pháp."},
+{q:"Nối từng bước của phương châm với ý nghĩa.",it:[["Dân biết","Công khai, minh bạch thông tin cho nhân dân"],["Dân bàn","Nhân dân tham gia thảo luận, góp ý"],["Dân làm","Nhân dân trực tiếp thực hiện"],["Dân kiểm tra","Nhân dân giám sát việc thực hiện"]],h:"Mỗi bước tương ứng một hành động rõ ràng của nhân dân."},
+{q:"Nối cơ sở của dân chủ XHCN với nội dung.",it:[["Cơ sở kinh tế","Chế độ sở hữu xã hội về tư liệu sản xuất chủ yếu"],["Cơ sở chính trị","Sự lãnh đạo của Đảng Cộng sản"],["Cơ sở tư tưởng","Hệ tư tưởng Mác - Lênin"],["Quyền con người, quyền công dân","Được Nhà nước tôn trọng và bảo đảm theo Hiến pháp"]],h:"Kinh tế, chính trị, tư tưởng là các cơ sở của dân chủ XHCN."}]},
+{t:"tf",n:"Màn 4: Phòng thẩm vấn",s:"Nghi phạm khai 5 điều. Máy phát hiện nói dối sẽ báo ngay lời khai nào đúng, lời khai nào sai.",q:"Lời khai này ĐÚNG hay SAI?",h:"Xem lại khái niệm dân chủ, dân chủ tư sản và Nhà nước pháp quyền XHCN.",w:"Nghi phạm bị dồn vào chân tường. 5 lời khai là những ý cốt lõi của chương.",R:[
+{it:[["Dân chủ là quyền lực thuộc về nhân dân.",1]],h:"Dân chủ gồm hai chữ: nhân dân và quyền lực."},
+{it:[["Dân chủ tư sản là nền dân chủ cho tuyệt đại đa số nhân dân lao động.",0]],h:"Dân chủ tư sản phục vụ lợi ích giai cấp tư sản; dân chủ XHCN mới là dân chủ của đa số."},
+{it:[["Nhà nước XHCN đầu tiên trên thế giới là Nhà nước Xô viết ở Nga năm 1917.",1]],h:"Cách mạng Tháng Mười Nga thành công năm 1917."},
+{it:[["Nhà nước pháp quyền XHCN Việt Nam đứng trên Hiến pháp và pháp luật.",0]],h:"Nhà nước tổ chức và hoạt động trên cơ sở Hiến pháp và pháp luật."},
+{it:[["Ở Việt Nam, quyền lực nhà nước là thống nhất, có sự phân công, phối hợp, kiểm soát.",1]],h:"Ba quyền lập pháp, hành pháp, tư pháp có phân công, phối hợp, kiểm soát."}]},
+{t:"fill",n:"Màn 5: Phiên tòa kết án",s:"Bản cáo trạng cuối cùng bị bôi đen vài chỗ. Điền đúng từ còn thiếu để kết án thủ phạm.",q:"Điền từ còn thiếu vào bản cáo trạng.",h:"Đọc lại phần kiến thức chương 4.",w:"Bản cáo trạng hoàn chỉnh. Thủ phạm bị vạch mặt: quyền lực phải thuộc về nhân dân.",R:[
+{fb:["Dân chủ nghĩa là quyền lực thuộc về _.",["nhandan"]],h:"Hai chữ, bắt đầu bằng chữ N."},
+{fb:["Phương châm ở cơ sở: Dân biết, dân bàn, dân _, dân kiểm tra.",["lam"]],h:"Một chữ, chỉ hành động thực hiện."},
+{fb:["Công xã _ năm 1871 là mầm mống của nhà nước kiểu mới.",["pari"]],h:"Tên thủ đô của nước Pháp."},
+{fb:["Nhà nước _ đầu tiên trên thế giới là Nhà nước Xô viết năm 1917.",["xahoichunghia"]],h:"Ba chữ, viết đầy đủ, không viết tắt."},
+{fb:["Quyền lực nhà nước là _, có sự phân công, phối hợp, _ giữa các cơ quan.",["thongnhat","kiemsoat"]],h:"Từ thứ nhất trái nghĩa với “chia cắt”, từ thứ hai là giám sát lẫn nhau."}]}
+];
+const FB0=["_",["x"]];
+function cur(){const l=L[lv];return {...l,...l.R[S.rd||0]}}
+const HUE=[25,32,8,18,42];
+const DECO=[["🔦","👣","🧤","🕯️","🔍","📷"],["🗄️","📁","📜","🕰️","🗂️","🖋️"],["📌","🧵","🧩","📎","🗺️","📌"],["💡","🪑","🎙️","📼","🔒","🚪"],["⚖️","🏛️","📜","🔨","⚖️","🏛️"],["🏙️","🌃","🔍","🕵️","🌃","🏙️"]];
+const IN=[
+{e:"🔦",t:"Hiện trường vụ án",s:"Đêm khuya, “Bản Hiến chương Quyền lực của nhân dân” biến mất. Thám tử phải nhặt đúng chứng cứ và bỏ qua những thứ gài bẫy.",how:"Tìm vật. Chạm vào những chứng cứ đúng, tránh các vật gài bẫy.",k:"Khái niệm dân chủ, dân chủ XHCN, bản chất Nhà nước XHCN, Nhà nước pháp quyền XHCN Việt Nam."},
+{e:"🗄️",t:"Phòng hồ sơ",s:"Tủ hồ sơ bị lục tung, giấy tờ nằm lẫn lộn. Hãy dựng lại đúng thứ tự để thấy ai đã ra tay.",how:"Sắp xếp thứ tự. Chạm lần lượt từ sớm nhất đến muộn nhất.",k:"Các hình thức dân chủ, mốc lịch sử nhà nước XHCN, các bản Hiến pháp của Việt Nam."},
+{e:"📌",t:"Bảng chứng cứ",s:"Trên bảng chứng cứ, những sợi chỉ đỏ bị đứt. Chỉ khi nối đúng các manh mối, hình dạng thủ phạm mới hiện ra.",how:"Nối cặp. Chạm ô bên trái, rồi chạm ô bên phải khớp với nó.",k:"Loại hình dân chủ, quyền lực nhà nước, phương châm dân biết, dân bàn, dân làm, dân kiểm tra."},
+{e:"🎙️",t:"Phòng thẩm vấn",s:"Nghi phạm ngồi dưới ánh đèn gắt, khai lần lượt 5 điều. Chỉ máy phát hiện nói dối của cả lớp mới biết điều nào là thật.",how:"Đúng - Sai. Đọc lời khai rồi chọn ĐÚNG hoặc SAI.",k:"Dân chủ tư sản và dân chủ XHCN, Nhà nước Xô viết, Nhà nước pháp quyền XHCN."},
+{e:"⚖️",t:"Phiên tòa kết án",s:"Phiên tòa cuối cùng. Bản cáo trạng bị bôi đen vài chỗ, cả lớp phải điền đúng để kết án thủ phạm.",how:"Điền chỗ trống. Gõ từ còn thiếu vào ô rồi bấm nút.",k:"Khái niệm dân chủ, Công xã Pa-ri, Nhà nước Xô viết, nguyên tắc quyền lực nhà nước."}];
+function lvIntro(){head();const i=IN[lv];
+  $("stage").innerHTML=`<div class="lvi"><div class="lve">${i.e}</div><div><p class="story" style="margin:0">Màn ${lv+1}/${L.length}</p><h1 class="big" style="margin:0">${i.t}</h1></div></div><p class="say">${i.s}</p><p><b>Cách chơi:</b> ${i.how}</p><p><b>Kiến thức trong màn:</b> ${i.k}</p><p>Gồm ${L[lv].R.length} câu, tối đa 5 lần sai.</p><div class="row"><button class="go" data-a="enter">Vào màn ${lv+1}</button></div>`}
+let lv=-1,mist=0,S={},msg="",hint=false,total=0;
+const $=id=>document.getElementById(id);
+const MOOD=["❓","❓","🔍","🧩","💡","✅"];
+function head(){const D=DECO[lv]||DECO[5];document.body.style.setProperty("--h",HUE[lv]||12);$("deco").innerHTML=D.map(e=>`<span>${e}</span>`).join("");document.querySelector(".top").style.display=lv<0?"none":"";
+  $("fill").style.width=(Math.max(lv,0)/L.length*100)+"%";
+  $("mood").textContent=MOOD[Math.max(0,Math.min(lv,5))];
+  $("plab").textContent=lv<0?"Sẵn sàng":lv>=L.length?"Hoàn thành":"Màn "+(lv+1)+"/"+L.length;
+}
+function intro(){
+  lv=-1;total=0;head();
+  $("stage").innerHTML=`<div class="hero"><div class="monk">🕵️</div><div><p class="sub">Hồ sơ mật, chương 4: Dân chủ xã hội chủ nghĩa và Nhà nước xã hội chủ nghĩa</p><h1 class="gt">Hồ sơ Quyền lực: Vụ án Dân chủ</h1></div></div>
+  <p class="story">Thành phố về đêm. Ai đó đã đánh cắp “Bản Hiến chương Quyền lực của nhân dân”. Cả lớp là đội thám tử: đi qua 5 hiện trường, gom đủ chứng cứ về dân chủ xã hội chủ nghĩa và Nhà nước xã hội chủ nghĩa để vạch mặt thủ phạm.</p>
+  <p>Cả lớp là một đội, mọi người hô đáp án, người dẫn chạm vào máy. Mỗi màn gồm 5 câu cùng một dạng trò chơi và có 5 huy hiệu: sai 5 lần thì vụ án bị đình chỉ và phải làm lại câu đó. Gợi ý không giới hạn nhưng nên dùng ít.</p>
+  <div class="row"><button class="go" data-a="start">Bắt đầu</button></div>`;
+}
+function load(){S={rd:0,dn:[],sn:[],fv:[]};mist=0;msg="";hint=false;rinit()}
+function rinit(){hint=false;msg="";S.okm=0;const x=cur();
+  if(x.t==="find")S.f=[];
+  if(x.t==="ord"){S.o=SH(x.it.map((_,i)=>i));S.nx=0}
+  if(x.t==="match"){S.r=SH(x.it.map((_,i)=>i));S.sel=null;S.d=[]}
+  if(x.t==="tf")S.i=0;
+  draw();
+}
+function fin(x){
+  if(x.t==="find")S.f=x.it.map((o,i)=>o[2]?i:-1).filter(i=>i>=0);
+  if(x.t==="ord"){S.o=x.it.map((_,i)=>i);S.nx=x.it.length}
+  if(x.t==="match"){const a=x.it.map((_,i)=>i);S.r=a;S.d=a;S.sel=null}
+}
+function go(r){
+  S.sn[S.rd]={f:S.f,o:S.o,nx:S.nx,r:S.r,sel:S.sel,d:S.d,i:S.i};
+  S.rd=r;hint=false;msg="";S.okm=0;
+  if(S.sn[r])Object.assign(S,S.sn[r]);
+  else if(!S.dn[r])return rinit();
+  draw();
+}
+function draw(err){
+  head();const x=cur(),dn=!!S.dn[S.rd],n=L[lv].R.length,last=S.rd===n-1;let b="";
+  if(dn)fin(x);
+  if(x.t==="find")b=`<div class="grid">${x.it.map((o,i)=>`<button class="it ${S.f.includes(i)?"good":dn?"dim":""}" data-a="find" data-v="${i}" ${S.f.includes(i)||dn?"disabled":""}><span>${o[0]}</span><em>${o[1]}</em></button>`).join("")}</div>`;
+  if(x.t==="ord")b=`<div class="grid" style="grid-template-columns:1fr">${S.o.map(i=>{const d=i<S.nx;return `<button class="ls ${d?"good":""}" data-a="ord" data-v="${i}" ${d?"disabled":""}>${d?`<span class="n">${i+1}</span><b>${x.it[i][1]}</b>: `:""}${x.it[i][0]}</button>`}).join("")}</div>`;
+  if(x.t==="match")b=`<div class="cols"><div>${x.it.map((o,i)=>`<button class="ls ${S.d.includes(i)?"good":S.sel===i?"sel":""}" data-a="mL" data-v="${i}" ${S.d.includes(i)?"disabled":""}>${o[0]}</button>`).join("")}</div><div>${S.r.map(i=>`<button class="ls ${S.d.includes(i)?"good":""}" data-a="mR" data-v="${i}" ${S.d.includes(i)?"disabled":""}>${x.it[i][1]}</button>`).join("")}</div></div>`;
+  if(x.t==="tf"){const t=x.it[S.i],ok=t[1];b=`<p class="say">Lời khai ${S.rd+1}/${n}: ${t[0]}</p><div class="tf"><button class="${dn&&ok?"good":""}" ${dn?"disabled":""} data-a="tf" data-v="1">ĐÚNG</button><button class="${dn&&!ok?"good":""}" ${dn?"disabled":""} data-a="tf" data-v="0">SAI</button></div>`}
+  if(x.t==="fill")b=`<p class="say">${(x.fb||FB0)[0].split("_").map((p,i,a)=>p+(i<a.length-1?`<input id="f${i}" aria-label="Chỗ trống ${i+1}" autocomplete="off">`:"")).join("")}</p>${dn?"":`<div class="row"><button class="go" data-a="chk">Gắn gạch</button></div>`}`;
+  $("stage").innerHTML=`<h2>${x.n} <small style="font-size:15px;font-weight:400;color:var(--mute)">(câu ${S.rd+1}/${n})</small></h2><p class="story">${x.s}</p><p class="q">${x.q}</p>${b}
+  ${hint&&!dn?`<div class="note"><b>Gợi ý:</b> ${x.h}</div>`:""}${msg?`<div class="note ${S.okm?"":"err"}">${msg}</div>`:dn?`<div class="note">Câu này đã trả lời đúng.</div>`:""}
+  <div class="row">${S.rd>0?`<button data-a="prev">◀ Câu trước</button>`:""}${dn?`<button class="go" data-a="nxq">${last?"Hoàn thành màn ▶":"Câu tiếp theo ▶"}</button>`:`<button data-a="hint">Gợi ý</button>`}<span class="tears" aria-label="Huy hiệu còn lại">${"🛡️".repeat(5-mist)}${"▫️".repeat(mist)}</span></div>`;
+  if(dn&&x.t==="fill")(S.fv[S.rd]||[]).forEach((t,i)=>{const e=$("f"+i);if(e){e.value=t;e.disabled=true}});
+  if(err){$("stage").classList.remove("shake");void $("stage").offsetWidth;$("stage").classList.add("shake")}
+}
+function wrong(m){
+  mist++;total++;
+  if(mist>=5){
+    $("stage").innerHTML=`<h2>Vụ án bị đình chỉ!</h2><p class="story">Thám tử đã mất hết huy hiệu. Cả lớp bình tĩnh xem lại manh mối rồi thử lần nữa nhé.</p><div class="note err">${L[lv].h}</div><div class="row"><button class="go" data-a="retry">Chơi lại câu này</button></div>`;return;
+  }
+  msg=m||"Chưa đúng. Nghi phạm đang cười đắc ý, hãy thử lại.";draw(true);
+}
+function win(){const last=S.rd===L[lv].R.length-1;S.dn[S.rd]=true;S.okm=1;msg=last?"Chính xác! Bấm “Hoàn thành màn” để khép hồ sơ màn này.":"Chính xác! Bấm “Câu tiếp theo” để đi tiếp.";draw()}
+function levelWin(){
+  head();const last=lv===L.length-1;
+  $("mood").textContent=MOOD[Math.min(lv+1,5)];
+  $("stage").innerHTML=`<h2>Đã giải xong màn này! 🕵️✅</h2><p class="say">${L[lv].w}</p><div class="row"><button class="go" data-a="next">${last?"Xem kết quả":"Sang màn tiếp theo"}</button><button data-a="review">Xem lại các câu</button></div>`;
+}
+function final(){
+  lv=L.length;head();$("fill").style.width="100%";$("mood").textContent="✅";
+  const st=total<=2?"3 sao":total<=6?"2 sao":"1 sao";
+  $("stage").innerHTML=`<h1 class="big">Vụ án đã được phá!</h1><p class="say">Cả lớp đã vạch mặt thủ phạm sau 5 màn với ${total} lần sai (${st}).</p>
+  <p><b>Điều cần nhớ:</b> dân chủ là quyền lực thuộc về nhân dân. Dân chủ XHCN là nền dân chủ cho tuyệt đại đa số nhân dân lao động. Nhà nước XHCN có mầm mống từ Công xã Pa-ri và ra đời đầu tiên là Nhà nước Xô viết năm 1917. Việt Nam xây dựng Nhà nước pháp quyền XHCN của nhân dân, do nhân dân, vì nhân dân, do Đảng Cộng sản lãnh đạo.</p>
+  <div class="row"><button class="go" data-a="again">Chơi lại</button></div>`;
+}
+$("stage").onclick=e=>{
+  const b=e.target.closest("[data-a]");if(!b)return;
+  const a=b.dataset.a,v=+b.dataset.v,x=(lv>=0&&lv<L.length)?cur():{};msg="";S.okm=0;
+  if(["find","ord","mL","mR","tf","chk"].includes(a)&&S.dn&&S.dn[S.rd])return;
+  if(a==="start"||a==="again"){lv=0;total=0;return lvIntro()}
+  if(a==="enter")return load();
+  if(a==="retry"){mist=0;S.sn[S.rd]=null;return rinit()}
+  if(a==="next"){if(lv===L.length-1)return final();lv++;return lvIntro()}
+  if(a==="prev")return go(S.rd-1);
+  if(a==="nxq"){if(S.rd===L[lv].R.length-1)return levelWin();return go(S.rd+1)}
+  if(a==="review")return draw();
+  if(a==="hint"){hint=true;return draw()}
+  if(a==="find"){if(x.it[v][2]){S.f.push(v);if(S.f.length===x.it.filter(o=>o[2]).length)return win();return draw()}return wrong("Vật này không phải chứng cứ đúng.")}
+  if(a==="ord"){if(v===S.nx){S.nx++;if(S.nx===x.it.length)return win();return draw()}return wrong("Chưa phải cột mốc sớm nhất trong số còn lại.")}
+  if(a==="mL"){S.sel=v;return draw()}
+  if(a==="mR"){if(S.sel===null){msg="Hãy chạm một ô bên trái trước.";return draw(true)}
+    if(S.sel===v){S.d.push(v);S.sel=null;if(S.d.length===x.it.length)return win();return draw()}
+    S.sel=null;return wrong("Hai ô này không khớp nhau.")}
+  if(a==="tf"){if(v===x.it[S.i][1]){if(S.i+1===x.it.length)return win();S.i++;return draw()}return wrong("Máy phát hiện nói dối báo động. Đáp án ngược lại đấy.")}
+  if(a==="chk"){const F=x.fb||FB0,k=F[1].map((z,i)=>norm($("f"+i).value)===z),vals=F[1].map((z,i)=>$("f"+i).value);
+    if(k.every(Boolean)){S.fv[S.rd]=vals;return win()}
+    wrong("Chưa đúng ở chỗ trống: "+k.map((o,i)=>o?"":(i+1)).filter(Boolean).join(", ")+".");
+    if($("f0"))vals.forEach((t,i)=>$("f"+i).value=t)}
+};
+document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.matches("input"))document.querySelector('[data-a="chk"]')?.click()});
+intro();
+</script>
+</body>
+</html>
